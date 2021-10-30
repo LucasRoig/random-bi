@@ -1,0 +1,36 @@
+version: '3'
+services:
+  react-ui:
+    build:
+      context: ./src/front
+      dockerfile: dev.Dockerfile
+    ports:
+      - "3000:3000"
+    container_name: react-ui
+    stdin_open: true
+    volumes:
+      - ./src/front:/usr/src/app/front
+      - ./src/backend:/usr/src/app/backend
+      - /usr/src/app/front/node_modules
+  react-ui-admin:
+    build:
+      context: ./src/front-admin
+      dockerfile: dev.Dockerfile
+    ports:
+      - "3002:3000"
+    container_name: react-ui-admin
+    stdin_open: true
+    volumes:
+      - ./src/front-admin:/usr/src/app/front-admin
+      - ./src/backend:/usr/src/app/backend
+      - /usr/src/app/front-admin/node_modules
+  backend:
+    build:
+      context: ./src/backend
+      dockerfile: dev.Dockerfile
+    ports:
+      - "3001:3001"
+    container_name: backend
+    volumes:
+      - ./src/backend:/usr/src/app/backend
+      - /usr/src/app/backend/node_modules

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@api-interfaces/*": [
+        "../backend/src/@api-interfaces/*"
+      ]
+    }
+  },
+}
